@@ -15,12 +15,9 @@ const MenuPosts = ({ withImage }) => {
         <div className={styles.textContainer}>
           <span className={`${styles.category} ${styles.travel}`}>Travel</span>
           <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Exploring new places opens your heart to the world's wonders and your mind to endless possibilities.
           </h3>
-          <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
-          </div>
+          
         </div>
       </Link>
       <Link href="/" className={styles.item}>
@@ -34,12 +31,9 @@ const MenuPosts = ({ withImage }) => {
             Culture
           </span>
           <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          In the tapestry of human existence, culture weaves the threads of tradition, identity, and shared stories.
           </h3>
-          <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
-          </div>
+          
         </div>
       </Link>
       <Link href="/" className={styles.item}>
@@ -51,12 +45,9 @@ const MenuPosts = ({ withImage }) => {
         <div className={styles.textContainer}>
           <span className={`${styles.category} ${styles.food}`}>Food</span>
           <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Food is the universal language of love, a delicious journey that connects us all.
           </h3>
-          <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
-          </div>
+         
         </div>
       </Link>
       <Link href="/" className={styles.item}>
@@ -70,12 +61,9 @@ const MenuPosts = ({ withImage }) => {
             Fashion
           </span>
           <h3 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Fashion is the mirror reflecting the ever-evolving beauty of individuality and creativity.
           </h3>
-          <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
-          </div>
+          
         </div>
       </Link>
     </div>
