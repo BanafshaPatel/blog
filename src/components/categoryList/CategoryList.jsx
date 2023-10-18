@@ -1,29 +1,41 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
-    cache: "no-store",
-  });
+const CategoryList = () => {
+  const [data, setData] = useState([]); // State for dynamic category data
 
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
+  useEffect(() => {
+    // Fetch dynamic category data
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/categories", {
+          cache: "no-store",
+        });
 
-  return res.json();
-};
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
 
-const CategoryList = async () => {
-  const data = await getData();
+        const categoryData = await res.json();
+        setData(categoryData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div className={styles.categoryList}>
       <h1 className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
-        {data?.map((item) => (
+        {data.map((item) => (
           <Link
-            href="/blog?cat=style"
+            href={`/blog?cat=${item.slug}`}
             className={`${styles.category} ${styles[item.slug]}`}
             key={item._id}
           >

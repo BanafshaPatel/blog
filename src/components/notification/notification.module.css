@@ -1,0 +1,36 @@
+/* notification.css */
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Add some padding */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 999; /* Ensure it's above other content */
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s; /* Fade-in and fade-out animations */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  }
+  

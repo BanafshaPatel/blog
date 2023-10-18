@@ -8,6 +8,8 @@ import { useSession } from "next-auth/react";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import ReactQuill from "react-quill";
+import Notification from "@/components/notification/Notification";
+
 
 
 
@@ -24,6 +26,9 @@ const WritePage = () => {
   const [value,setValue] = useState("");
   const [title,setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+  const [notificationVisible, setNotificationVisible] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
+
   
  
    useEffect(() => {
@@ -82,6 +87,7 @@ const WritePage = () => {
 
 
    const handleSubmit = async()=>{
+    console.log("Submit button clicked");
     const res = await fetch("/api/posts",{
       method: "POST",
       body:JSON.stringify({
@@ -92,9 +98,20 @@ const WritePage = () => {
         catSlug: catSlug || "style",
       })
    });
+   if (res.status === 200) {
+    setNotificationMessage("Your story was published successfully!");
+    setNotificationVisible(true);
+  } else {
+    setNotificationMessage("Oops! Something went wrong while publishing your story.");
+    setNotificationVisible(true);
+  }
+};
 
-   console.log(res)
-  };
+const closeNotification = () => {
+  setNotificationVisible(false);
+};
+   
+  
 
   return (
     <div className={styles.container}>
@@ -140,8 +157,11 @@ const WritePage = () => {
        placeholder="Tell your story.."/>
      </div>
      <button className={styles.publish} onClick={handleSubmit}>Publish</button>
+     {notificationVisible && (
+        <Notification message={notificationMessage} onClose={closeNotification} />
+      )}
     </div>
-  )
-}
+  );
+       }
 
 export default WritePage;
